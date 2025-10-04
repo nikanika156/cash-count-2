@@ -5,7 +5,7 @@ import { Cash } from "./component/cash/cash";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Cash],
+  imports: [RouterOutlet, Header],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
