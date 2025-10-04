@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-zone": {
+    "cash-count": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test-zone:build:production"
+              "buildTarget": "cash-count:build:production"
             },
             "development": {
-              "buildTarget": "test-zone:build:development"
+              "buildTarget": "cash-count:build:development"
             }
           },
           "defaultConfiguration": "development"

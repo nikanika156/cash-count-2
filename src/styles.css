@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 38rem;
+  --wrapper: --
+}
+
+.wrapper{
+    display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.main{
+  flex:1;
+
+  overflow: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+body,
+html {
+  background-color: var(--color-neutral-300);
+
+  height: 100%;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}

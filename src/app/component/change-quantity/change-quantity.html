@@ -1,0 +1,22 @@
+<div class="flex gap-1 flex-col text-neutral-300">
+  <div class="flex flex-1 gap-1">
+    @for(negative of [1,2,5,10];track negative){
+    <button
+      class=" flex-1 bg-neutral-700 py-1 px-4 w-15 disabled:bg-neutral-600 rounded"
+      (click)="decrease(-negative, cash)"
+      [disabled]="negative>cash.count"
+      >
+      -{{ negative }}
+    </button>
+    }
+  </div>
+  <div class="flex flex-1 gap-1">
+    @for(positive of [1,2,5,10];track positive){
+
+    <button class="bg-neutral-700 py-4 px-4 w-15 rounded flex-1 " (click)="increase(positive,cash)">
+     +{{positive}}
+    </button>
+    }
+  </div>
+
+</div>
