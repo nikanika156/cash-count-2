@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeType } from '../../types/change-type';
+
 
 @Component({
   selector: 'app-change-quantity',
@@ -6,19 +8,23 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './change-quantity.html',
   styleUrl: './change-quantity.css',
 })
-export class ChangeQuantity implements OnInit {
+export class ChangeQuantity {
   @Input() cash!: any;
-  @Output() getAction = new EventEmitter<any>();
+  @Output() getAction = new EventEmitter<ChangeType>();
 
-  ngOnInit(): void {}
-
-  increase(number: number, value: any) {
-    value.count += number;
-
-    this.getAction.emit({number,value});
+  changeQuantity(value: number, isPositiveChange: boolean) {
+    console.log(this.cash);
+    
+    this.getAction.emit({ value, isPositiveChange });
   }
-  decrease(number: number, value: any) {
-    value.count += number;
-    this.getAction.emit({number,value});
-  }
+
+  // increase(number: number, value: any) {
+  //   value.count += number;
+
+  //   this.getAction.emit({ number, value });
+  // }
+  // decrease(number: number, value: any) {
+  //   value.count += number;
+  //   this.getAction.emit({number,value});
+  // }
 }

@@ -1,5 +1,5 @@
-<section class="min-w-0 flex text-gray-300 px-3">
-  <div class="grid gap-3 min-w-0 min-sm:grid-cols-[1fr_1fr] min-lg:grid-cols-3 min-xl:grid-cols-4 flex-1/2">
+<!-- <section class="min-w-0 flex text-gray-300 px-3">
+  <div class="grid gap-3 min-w-0 sm:grid-cols-[1fr_1fr] lg:grid-cols-3 xl:grid-cols-4 flex-1/2">
     @for(cash of cashCount;track cash){
     <div class="bg-neutral-500 p-2.5 rounded text-right">
       <div
@@ -15,29 +15,29 @@
           [size]="18"
         ></span-lucide>
         <div class="flex-1/6">
+
           <input
             type="number"
-            [(ngModel)]="cash.count"
             style="text-align: right"
             placeholder="0"
             id=""
             min="0"
-            (input)="send(cash, 'input')"
-            class="bg-neutral-700 w-full rounded text-gray-300 px-1 outline-0 border-1 border-transparent focus:border-neutral-400"
-          />
+            class="bg-neutral-700 w-full rounded text-gray-300 px-1 outline-0 border border-transparent focus:border-neutral-400"
+            />
+
         </div>
         <p class="mx-2">=</p>
         <p class="w-15 text-left px-1 bg-neutral-700 rounded">
-          {{ cash.total }}
+
         </p>
       </div>
       <div class="flex flex-col gap-1">
         <app-change-quantity
-          (getAction)="send($event, 'button')"
+          (getAction)="handleChanges($event)"
           [cash]="cash"
         ></app-change-quantity>
       </div>
     </div>
     }
   </div>
-</section>
+</section> -->

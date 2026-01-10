@@ -1,9 +1,17 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { ChangeQuantity } from '../change-quantity/change-quantity';
 
-import { LucideAngularModule, X } from 'lucide-angular';
+import { LucideAngularModule, LucideIconData, X } from 'lucide-angular';
+import { ChangeType } from '../../types/change-type';
+import { Summation } from '../../service/summation/summation';
 
 class CashItem {
   constructor(public cash: number, public count: number | null = null) {}
@@ -18,40 +26,48 @@ class CashItem {
   templateUrl: './cash.html',
   styleUrl: './cash.css',
 })
-export class Cash implements OnInit {
-  readonly X = X;
+export class Cash implements AfterViewInit {
+  X = X;
+  constructor(public summation: Summation) {}
+
+  ngAfterViewInit(): void {
+
+     this.summation.createArr()
+this.summation.changeQuantity()
+
+    
+  }
   @Output() sum = new EventEmitter<number>();
-  cashDenominations: string[] = [
-    '5',
-    '10',
-    '20',
-    '50',
-    '100',
-    '200',
-    '500',
-    '1000',
-    '2000',
-    '5000',
-    '10000',
-  ];
 
-  cashCount: CashItem[] = [];
-  total: number = 0;
+  // cashDenominations: string[] = [
+  //   '5',
+  //   '10',
+  //   '20',
+  //   '50',
+  //   '100',
+  //   '200',
+  //   '500',
+  //   '1000',
+  //   '2000',
+  //   '5000',
+  //   '10000',
+  // ];
+  // cashCount: CashItem[] = [];
+  // total: number = 0;
 
-  ngOnInit(): void {
-    console.log(this.cashCount);
+  // ngOnInit(): void {
 
-    this.cashCount = this.cashDenominations.map(
-      (c) => new CashItem(parseInt(c))
-    );
+  //   this.cashCount = this.cashDenominations.map(
+  //     (c) => new CashItem(parseInt(c))
+  //   );
 
-    console.log(this.total);
-  }
+  // }
 
-  result = this.cashCount.map((x) => x.count);
+  // result = this.cashCount.map((x) => x.count);
 
-  send(cash: CashItem, action: string | number) {
-    this.sum.emit(this.cashCount.reduce((acc, item) => acc + item.total, 0));
-    // console.log(this.cashCount.reduce((acc, item) => acc + item.total, 0));
-  }
+  // send(cash: CashItem, action: string | number) {
+  //   this.sum.emit(this.cashCount.reduce((acc, item) => acc + item.total, 0));
+  //   // console.log(this.cashCount.reduce((acc, item) => acc + item.total, 0));
+  // }
+  handleChanges(change: ChangeType) {}
 }

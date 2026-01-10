@@ -7,7 +7,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:gh": "ng build --configuration production --base-href /cash-count-2/ && rm -rf docs && mkdir docs && cp -r \"dist/cash-count/browser\"/* docs && rm -rf dist"
   },
   "prettier": {
     "overrides": [
@@ -27,11 +28,11 @@
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
-    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/postcss": "4.1",
     "lucide-angular": "^0.541.0",
     "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "4.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
