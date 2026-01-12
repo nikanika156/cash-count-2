@@ -41,3 +41,18 @@
     }
   </div>
 </section> -->
+<section>
+  <div class="grid grid-cols-4 gap-3">
+    @for(cashItem of this.cashArr;track cashItem.cash){
+    <div >
+      <div class="flex justify-between">
+        <span>{{ cashItem.cash / 100 }}</span>
+       <input class="text-right" type="number" [(ngModel)]="cashItem.count">
+      </div>
+      <div>
+        <app-change-quantity [cash]="cashItem"></app-change-quantity>
+      </div>
+    </div>
+    }
+  </div>
+</section>

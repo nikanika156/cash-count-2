@@ -5,18 +5,8 @@ import { CashItem } from '../../types/cash-item';
   providedIn: 'root',
 })
 export class Summation {
-  cashDenominations: string[] = [
-    '5',
-    '10',
-    '20',
-    '50',
-    '100',
-    '200',
-    '500',
-    '1000',
-    '2000',
-    '5000',
-    '10000',
+  cashDenominations: number[] = [
+    5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000,
   ];
   cashCount: CashItem[] = [];
   total: number = 0;
@@ -26,17 +16,14 @@ export class Summation {
       return this.cashCount;
     } else {
       this.cashCount = this.cashDenominations.map(
-        (c) => new CashItem(parseInt(c)/100)
+        (c) => new CashItem(c)
       );
       return this.cashCount;
     }
   }
-  changeQuantity(index?:number){
-    index = 4
-    this.cashCount[index].count=9
+  changeQuantity(index?: number) {
+    index = 4;
+    this.cashCount[index].count = 9;
     console.log(this.cashCount);
-    
-
   }
-  
 }

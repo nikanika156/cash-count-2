@@ -5,36 +5,29 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-
-import { FormsModule } from '@angular/forms';
 import { ChangeQuantity } from '../change-quantity/change-quantity';
-
 import { LucideAngularModule, LucideIconData, X } from 'lucide-angular';
 import { ChangeType } from '../../types/change-type';
 import { Summation } from '../../service/summation/summation';
+import { FormsModule } from '@angular/forms';
+import { CashItem } from '../../types/cash-item';
 
-class CashItem {
-  constructor(public cash: number, public count: number | null = null) {}
-
-  get total(): number {
-    return Math.round(this.cash * this.count!) / 100;
-  }
-}
 @Component({
   selector: 'app-cash',
   imports: [ChangeQuantity, FormsModule, LucideAngularModule],
   templateUrl: './cash.html',
   styleUrl: './cash.css',
 })
-export class Cash implements AfterViewInit {
+export class Cash implements OnInit {
   X = X;
-  constructor(public summation: Summation) {}
+  cashArr: CashItem[] = [];
+  constructor(private summation: Summation) {}
 
-  ngAfterViewInit(): void {
-
-     this.summation.createArr()
-this.summation.changeQuantity()
-
+  ngOnInit(): void {
+    this.summation.createArr();
+    this.cashArr = this.summation.cashCount;
+    this.summation.changeQuantity();
+    console.log(this.cashArr);
     
   }
   @Output() sum = new EventEmitter<number>();

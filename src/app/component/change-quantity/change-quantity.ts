@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ChangeType } from '../../types/change-type';
+import { CashItem } from '../../types/cash-item';
 
 
 @Component({
@@ -9,22 +10,12 @@ import { ChangeType } from '../../types/change-type';
   styleUrl: './change-quantity.css',
 })
 export class ChangeQuantity {
-  @Input() cash!: any;
+  @Input() cash!: CashItem;
+
   @Output() getAction = new EventEmitter<ChangeType>();
 
   changeQuantity(value: number, isPositiveChange: boolean) {
-    console.log(this.cash);
-    
+    isPositiveChange ? (this.cash.count += value) : (this.cash.count -= value);
     this.getAction.emit({ value, isPositiveChange });
   }
-
-  // increase(number: number, value: any) {
-  //   value.count += number;
-
-  //   this.getAction.emit({ number, value });
-  // }
-  // decrease(number: number, value: any) {
-  //   value.count += number;
-  //   this.getAction.emit({number,value});
-  // }
 }
