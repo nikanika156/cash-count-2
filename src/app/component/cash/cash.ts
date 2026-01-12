@@ -11,10 +11,12 @@ import { ChangeType } from '../../types/change-type';
 import { Summation } from '../../service/summation/summation';
 import { FormsModule } from '@angular/forms';
 import { CashItem } from '../../types/cash-item';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-cash',
-  imports: [ChangeQuantity, FormsModule, LucideAngularModule],
+  imports: [ChangeQuantity, FormsModule, LucideAngularModule ,MatCardModule,MatInputModule],
   templateUrl: './cash.html',
   styleUrl: './cash.css',
 })
@@ -25,8 +27,8 @@ export class Cash implements OnInit {
 
   ngOnInit(): void {
     this.summation.createArr();
-    this.cashArr = this.summation.cashCount;
-    this.summation.changeQuantity();
+    this.cashArr = this.summation.cashCount();
+    this.summation.changeQuantity(5,5);
     console.log(this.cashArr);
     
   }

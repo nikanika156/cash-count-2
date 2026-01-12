@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:gh": "ng build --configuration production --base-href /cash-count-2/ && rm -rf docs && mkdir docs && cp -r \"dist/cash-count/browser\"/* docs && rm -rf dist"
+    "build-gh": "ng build --configuration production --base-href /cash-count-2/ && rm -rf docs && mkdir docs && cp -r \"docs\""
   },
   "prettier": {
     "overrides": [

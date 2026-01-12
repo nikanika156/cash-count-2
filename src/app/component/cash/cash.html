@@ -1,58 +1,22 @@
-<!-- <section class="min-w-0 flex text-gray-300 px-3">
-  <div class="grid gap-3 min-w-0 sm:grid-cols-[1fr_1fr] lg:grid-cols-3 xl:grid-cols-4 flex-1/2">
-    @for(cash of cashCount;track cash){
-    <div class="bg-neutral-500 p-2.5 rounded text-right">
-      <div
-        class="flex items-center mb-1 bg-neutral-600 p-1.5 rounded box-border"
-      >
-        <p class="text-gray-300 text-nowrap flex items-center">
-          {{ cash.cash / 100 }} ₾
-        </p>
-        <span-lucide
-          [img]="X"
-          class="my-icon"
-          [class]="'mx-0.5'"
-          [size]="18"
-        ></span-lucide>
-        <div class="flex-1/6">
-
-          <input
-            type="number"
-            style="text-align: right"
-            placeholder="0"
-            id=""
-            min="0"
-            class="bg-neutral-700 w-full rounded text-gray-300 px-1 outline-0 border border-transparent focus:border-neutral-400"
-            />
-
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
+  @for(cashItem of this.cashArr;track cashItem.cash){
+  <mat-card>
+    <mat-card-header>
+      <mat-form-field class="w-full">
+        <div class="flex gap-2">
+          <span>{{ cashItem.cash / 100 }}</span>
+          <input type="number" matInput class="text-right" [(ngModel)]="cashItem.count" />
+          <span>=</span>
+          <span>{{ cashItem.total }}</span>
         </div>
-        <p class="mx-2">=</p>
-        <p class="w-15 text-left px-1 bg-neutral-700 rounded">
-
-        </p>
-      </div>
-      <div class="flex flex-col gap-1">
-        <app-change-quantity
-          (getAction)="handleChanges($event)"
-          [cash]="cash"
-        ></app-change-quantity>
-      </div>
-    </div>
-    }
-  </div>
-</section> -->
-<section>
-  <div class="grid grid-cols-4 gap-3">
-    @for(cashItem of this.cashArr;track cashItem.cash){
-    <div >
-      <div class="flex justify-between">
-        <span>{{ cashItem.cash / 100 }}</span>
-       <input class="text-right" type="number" [(ngModel)]="cashItem.count">
-      </div>
-      <div>
-        <app-change-quantity [cash]="cashItem"></app-change-quantity>
-      </div>
-    </div>
-    }
-  </div>
-</section>
+      </mat-form-field>
+    </mat-card-header>
+    <mat-card-actions>
+      <app-change-quantity
+        class="w-full"
+        [cashItem]="cashItem"
+      ></app-change-quantity>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
